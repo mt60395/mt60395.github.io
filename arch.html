@@ -465,6 +465,14 @@ $ reboot</pre>
                             <pre># sudo rm -rf home.orig</pre>
                         </li>
                     </ul>
+                    <h2><span class="mw-headline" id="Pacaur">Pacaur</span></h2>
+                    <p><a href="https://aur.archlinux.org/packages/pacaur/" title="pacaur">Pacaur</a> is an 
+                    <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository" title="AUR">AUR</a> helper. If a package is on the AUR and you can't get it with pacman, then you can use pacaur.</p>
+                    <p>Make sure you have <a href="https://wiki.archlinux.org/index.php/Git" title="git">git</a> installed prior to this:</p>
+                    <pre># cd ~
+# git clone https://aur.archlinux.org/pacaur.git
+# cd pacaur
+# makepkg -si</pre>
                     <h2><span class="mw-headline" id="Troubleshooting">Troubleshooting</span></h2>
                     <h3><span class="mw-headline" id="Permissions">'Permission denied' or 'Unable to write'</span></h3>
                     <p>Usually the solution is just to prepend <code>sudo</code> to the command or switch to the root user by:<pre>$ sudo su</pre></p>
