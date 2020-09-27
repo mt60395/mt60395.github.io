@@ -282,9 +282,9 @@
                                 href="https://jlk.fjfi.cvut.cz/arch/manpages/man/pacstrap.8">pacstrap(8)</a></span> script to install the <span class="plainlinks archwiki-template-pkg"><a rel="nofollow"
                                 class="text"
                                 href="https://www.archlinux.org/packages/?name=base">base</a></span> packages, Linux <a href="https://wiki.archlinux.org/index.php/Kernel" title="Kernel">kernel</a> and firmware for common hardware, <a href="https://wiki.archlinux.org/index.php/NetworkManager" title="NetworkManager">NetworkManager</a> for networking,
-                        <a href="https://wiki.archlinux.org/index.php/GRUB" title="GRUB">GRUB</a> (+ efibootmgr) as a bootloader, and <a href="https://wiki.archlinux.org/index.php/Nano" title="Nano">nano</a> as a text editor:
+                        <a href="https://wiki.archlinux.org/index.php/GRUB" title="GRUB">GRUB</a> (+ efibootmgr and os-prober) as a bootloader, and <a href="https://wiki.archlinux.org/index.php/Nano" title="Nano">nano</a> as a text editor:
                     </p>
-                    <pre># pacstrap /mnt base base-devel linux linux-firmware networkmanager grub nano efibootmgr
+                    <pre># pacstrap /mnt base base-devel linux linux-firmware networkmanager grub nano efibootmgr os-prober
 </pre>
                     <p>To <a href="https://wiki.archlinux.org/index.php/Install" class="mw-redirect" title="Install">install</a> other packages or package groups, append the names to the
                         <i>pacstrap</i> command above (space separated) or use <a href="https://wiki.archlinux.org/index.php/Pacman" title="Pacman">pacman</a> while <a href="#Chroot">chrooted into the new system</a>. For comparison, packages available in the live system can be found in <a rel="nofollow" class="text" href="https://gitlab.archlinux.org/archlinux/archiso/-/blob/master/configs/releng/packages.x86_64">packages.x86_64</a>.
@@ -366,7 +366,7 @@
                     <pre># passwd
 </pre>
                     <h3><span class="mw-headline" id="Boot_loader">Install GRUB Bootloader</span></h3>
-                    <p>Install GRUB to the disk name, not a partition.</p>
+                    <p>Install GRUB to the disk name, not a partition. Run the <code>grub-mkconfig</code> command if you add another operating system to the same disk.</p>
                     <pre># grub-install /dev/<i>disk_name</i> --efi-directory=/boot
 # grub-mkconfig -o /boot/grub/grub.cfg</pre>
 
@@ -476,7 +476,7 @@ $ reboot</pre>
                     </p>
                     <h2><span class="mw-headline" id="Pacaur">Pacaur</span></h2>
                     <p><a href="https://aur.archlinux.org/packages/pacaur/" title="pacaur">Pacaur</a> is an 
-                    <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository" title="AUR">AUR</a> helper. If a package is on the AUR and you can't get it with pacman, then you can use pacaur.</p>
+                    <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository" title="AUR">AUR</a> helper. If a package is on the AUR and you can't get it with pacman, then you can use pacaur. You should clone the repository using git if it has a Git Clone URL, and then use <code>makepkg -si</code>, however.</p>
                     <p>Make sure you have <a href="https://wiki.archlinux.org/index.php/Git" title="git">git</a> installed prior to this:</p>
                     <pre># cd ~
 # git clone https://aur.archlinux.org/pacaur.git
