@@ -122,6 +122,10 @@
 </pre>
                     <p>To check the service status, use <code>timedatectl status</code>.
                     </p>
+                    <p>If you have a partition for Windows, it is common to have Linux use local time and have Windows sync the time.
+                        <br>Use this command to have Linux use local time:
+                        <pre># timedatectl set-local-rtc 1 --adjust-system-clock</pre>
+                    </p>
                     <h3><span class="mw-headline" id="Partition_the_disks">Partition the disks</span></h3>
                     <p>When recognized by the live system, disks are assigned to a <a href="https://wiki.archlinux.org/index.php/Block_device" class="mw-redirect" title="Block device">block device</a> such as <code>/dev/sda</code>,
                         <code>/dev/nvme0n1</code> or <code>/dev/mmcblk0</code>. To identify these devices, use <a href="https://wiki.archlinux.org/index.php/Lsblk" class="mw-redirect" title="Lsblk">lsblk</a> or <i>fdisk</i>.
