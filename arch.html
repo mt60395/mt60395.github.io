@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Installation guide - ArchWiki</title>
+    <title>Installation guide - mt60395</title>
     <link rel="stylesheet" href="arch.css">
     <link rel="license" href="http://www.gnu.org/copyleft/fdl.html">
 </head>
@@ -286,7 +286,8 @@
                                 href="https://jlk.fjfi.cvut.cz/arch/manpages/man/pacstrap.8">pacstrap(8)</a></span> script to install the <span class="plainlinks archwiki-template-pkg"><a rel="nofollow"
                                 class="text"
                                 href="https://www.archlinux.org/packages/?name=base">base</a></span> packages, Linux <a href="https://wiki.archlinux.org/index.php/Kernel" title="Kernel">kernel</a> and firmware for common hardware, <a href="https://wiki.archlinux.org/index.php/NetworkManager" title="NetworkManager">NetworkManager</a> for networking,
-                        <a href="https://wiki.archlinux.org/index.php/GRUB" title="GRUB">GRUB</a> (+ efibootmgr and os-prober) as a bootloader, and <a href="https://wiki.archlinux.org/index.php/Nano" title="Nano">nano</a> as a text editor:
+                        <a href="https://wiki.archlinux.org/index.php/GRUB" title="GRUB">GRUB</a> (+ efibootmgr and os-prober) as a bootloader, and <a href="https://wiki.archlinux.org/index.php/Nano" title="Nano">nano</a> as a text editor
+                        (optionally, you can use <a href="https://wiki.archlinux.org/index.php/Vim">vim</a> as a text editor):
                     </p>
                     <pre># pacstrap /mnt base base-devel linux linux-firmware networkmanager grub nano efibootmgr os-prober
 </pre>
@@ -418,6 +419,28 @@ root ALL=(ALL) ALL
                     <pre style="margin-top: 0; border-top-style:dashed; padding-top: 0.8em;">exec startkde</pre>
                     <pre>$ systemctl enable sddm
 $ reboot</pre>
+
+                    <h2><span class="mw-headline" id="Window_manager">Window manager</span></h2>
+                    <p>Window managers are solely window managers. Other programs like file managers, display managers, and terminal emulators must be installed separately.</p>
+                    <p>Window managers are more minimalist than desktop environments. I would personally recommend
+                        <a href="https://wiki.archlinux.org/index.php/Bspwm">bspwm</a>. i3wm sucks.
+                    </p>
+                    <p>The process is as follows:</p>
+                    <ul>
+                        <li>Install a window manager. For bspwm, make sure that you make the configuration files executable.</li>
+                        <li>Optionally, install a <a href="https://wiki.archlinux.org/index.php/Display_manager">display manager</a>.
+                            The alternative would be to manually start up your window manager after logging in.
+                            Enable it at startup with <a href="https://wiki.archlinux.org/index.php/Systemd#Basic_systemctl_usage">systemctl</a>.
+                        </li>
+                        <li>Install a <a href="https://wiki.archlinux.org/index.php/List_of_applications/Utilities#Terminal_emulators">terminal emulator</a>.</li>
+                        <li>Optionally, install a status bar like <a href="https://wiki.archlinux.org/index.php/Polybar">polybar</a>.</li>
+                        <li>If you want a file manager, <a href="https://wiki.archlinux.org/index.php/Thunar">Thunar</a> is a good choice.
+                            <a href="https://wiki.archlinux.org/index.php/ranger">ranger is also viable.</a>
+                        </li>
+                        <li>I use a clipboard manager, <a href="https://aur.archlinux.org/packages/clipit/">clipit</a>.</li>
+                    </ul>
+
+
                     <h2><span class="mw-headline" id="Moving_home">Moving /home</span></h2>
                     <p>You might want to move your /home folder to another drive if the other drive has more storage available for your programs.</p>
                     <ul>
@@ -441,7 +464,7 @@ $ reboot</pre>
                             <li>
                                 <p>After making sure, move on:</p>
                             </li>
-                            <pre>$ cd
+                            <pre>$ cd /
 # sudo mv /home /home.orig
 # sudo mkdir /home
 # sudo umount /dev/<i>new_partition</i>
@@ -469,6 +492,7 @@ $ reboot</pre>
                             <pre># sudo rm -rf home.orig</pre>
                         </li>
                     </ul>
+
                     <h2><span class="mw-headline" id="pacman">Pacman</span></h2>
                     <p><a href="https://wiki.archlinux.org/index.php/Pacman" title="pacman">pacman</a> is the package manager for Arch Linux.</p>
                     <h3><span class="mw-headline" id="pacman-usage">Usage</span></h3>
@@ -477,16 +501,16 @@ $ reboot</pre>
                         it removes the package AND any orphaned dependencies that will occur as a result of this removal.
                         Its configuration files saved by pacman will not be removed.
                         <br><code>pacman -Syy</code> syncs your packages and refreshes your package database.
-                        <br><code>paccache -r</code> can clear the cache.
+                        <br><code>pacman -Sc</code> can clear the cache.
                     </p>
-                    <h2><span class="mw-headline" id="Pacaur">Pacaur</span></h2>
-                    <p><a href="https://aur.archlinux.org/packages/pacaur/" title="pacaur">Pacaur</a> is an 
-                    <a href="https://wiki.archlinux.org/index.php/Arch_User_Repository" title="AUR">AUR</a> helper. If a package is on the AUR and you can't get it with pacman, then you can use pacaur. You should clone the repository using git if it has a Git Clone URL, and then use <code>makepkg -si</code>, however.</p>
-                    <p>Make sure you have <a href="https://wiki.archlinux.org/index.php/Git" title="git">git</a> installed prior to this:</p>
+                    <h3><span class="mw-headline" id="AUR">Installing AUR packages</span></h3>
+                    <p> </p>You should clone the repository using <a href="https://wiki.archlinux.org/index.php/Git">git</a> if it has a Git Clone URL, and then use <code>makepkg -si</code> after using <code>cd</code> to change directories.</p>
                     <pre># cd ~
-# git clone https://aur.archlinux.org/pacaur.git
-# cd pacaur
-# makepkg -si</pre>
+# git clone <i>git-clone-url</i>
+# cd <i>package</i>
+# makepkg -si
+# cd ..
+# rm -rf <i>package</i></pre>
                     <h2><span class="mw-headline" id="Miscellaneous">Miscellaneous</span></h2>
                     <h3><span class="mw-headline" id="Defaults">Setting defaults</span></h3>
                     <p><a href="https://wiki.archlinux.org/index.php/Xdg-utils#xdg-settings">xdg-settings</a> can be used to set defaults if you don't have a feature in your desktop environment to do so.</p>
