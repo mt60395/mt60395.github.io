@@ -25,7 +25,9 @@
                 <div class="mw-parser-output">
                     <p>This document is a guide for installing <a href="https://wiki.archlinux.org/index.php/Arch_Linux" title="Arch Linux">Arch Linux</a> using the live system booted from an installation medium made from an official installation image. Additionally, it includes instructions on how to install
                         <a href="https://wiki.archlinux.org/index.php/GRUB" title="GRUB">GRUB</a>, a
-                        <a href="https://wiki.archlinux.org/index.php/Desktop_environment" title="Desktop environment">desktop environment (KDE)</a>, and how to mount /home to a different partition.
+                        <a href="https://wiki.archlinux.org/index.php/Desktop_environment" title="Desktop environment">desktop environment (KDE)</a>, 
+                        the basic rundown of how to install a <a href="https://wiki.archlinux.org/index.php/Window_manager" title="Window managers">window manager</a>, 
+                        and how to mount /home to a different partition.
                     </p>
                     <p>Note that this is <b>not the original install guide,</b> which can be found <a href="https://wiki.archlinux.org/index.php/Installation_guide" title="Installation guide">here.</a> This is a modified version with additions that I have found to be fitting after installing Arch on multiple machines, multiple times.</p>
                     <p>Before installing, it would be advised to view the <a href="https://wiki.archlinux.org/index.php/FAQ" class="mw-redirect" title="FAQ">FAQ</a>. For conventions used in this document, see <a href="https://wiki.archlinux.org/index.php/Help:Reading" title="Help:Reading">Help:Reading</a>. In particular, code examples may contain placeholders (formatted in <code><i>italics</i></code>) that must be replaced manually.</p>
@@ -423,21 +425,21 @@ $ reboot</pre>
                     <h2><span class="mw-headline" id="Window_manager">Window manager</span></h2>
                     <p>Window managers are solely window managers. Other programs like file managers, display managers, and terminal emulators must be installed separately.</p>
                     <p>Window managers are more minimalist than desktop environments. I would personally recommend
-                        <a href="https://wiki.archlinux.org/index.php/Bspwm">bspwm</a>. i3wm sucks.
+                        <a href="https://wiki.archlinux.org/index.php/Bspwm" title="bspwm">bspwm</a>. i3wm sucks.
                     </p>
                     <p>The process is as follows:</p>
                     <ul>
                         <li>Install a window manager. For bspwm, make sure that you make the configuration files executable.</li>
-                        <li>Optionally, install a <a href="https://wiki.archlinux.org/index.php/Display_manager">display manager</a>.
+                        <li>Optionally, install a <a href="https://wiki.archlinux.org/index.php/Display_manager" title="Display manager">display manager</a>.
                             The alternative would be to manually start up your window manager after logging in.
-                            Enable it at startup with <a href="https://wiki.archlinux.org/index.php/Systemd#Basic_systemctl_usage">systemctl</a>.
+                            Enable it at startup with <a href="https://wiki.archlinux.org/index.php/Systemd#Basic_systemctl_usage" title="systemctl">systemctl</a>.
                         </li>
-                        <li>Install a <a href="https://wiki.archlinux.org/index.php/List_of_applications/Utilities#Terminal_emulators">terminal emulator</a>.</li>
-                        <li>Optionally, install a status bar like <a href="https://wiki.archlinux.org/index.php/Polybar">polybar</a>.</li>
-                        <li>If you want a file manager, <a href="https://wiki.archlinux.org/index.php/Thunar">Thunar</a> is a good choice.
-                            <a href="https://wiki.archlinux.org/index.php/ranger">ranger is also viable.</a>
+                        <li>Install a <a href="https://wiki.archlinux.org/index.php/List_of_applications/Utilities#Terminal_emulators" title="Terminal emulators">terminal emulator</a>.</li>
+                        <li>Optionally, install a status bar like <a href="https://wiki.archlinux.org/index.php/Polybar" title="polybar">polybar</a>.</li>
+                        <li>If you want a file manager, <a href="https://wiki.archlinux.org/index.php/Thunar" title="Thunar">Thunar</a> is a good choice.
+                            <a href="https://wiki.archlinux.org/index.php/ranger" title="ranger">ranger is also viable.</a>
                         </li>
-                        <li>I use a clipboard manager, <a href="https://aur.archlinux.org/packages/clipit/">clipit</a>.</li>
+                        <li>I use a clipboard manager, <a href="https://aur.archlinux.org/packages/clipit/" title="clipit">clipit</a>.</li>
                     </ul>
 
 
@@ -448,11 +450,7 @@ $ reboot</pre>
                             <pre># sudo mkfs.ext4 /dev/<i>new_partition</i>
 # sudo mount /dev/<i>new_partition</i> /mnt
 # cd /mnt
-# ls -ahl</pre>
-                            <li>
-                                <p>If "lost+found" is present then run:</p>
-                            </li>
-                            <pre># sudo rm -rf lost+found</pre>
+# sudo rm -rf lost+found</pre>
                             <li>
                                 <p>Copy over /home to /mnt.</p>
                             </li>
