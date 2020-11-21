@@ -502,14 +502,13 @@ $ reboot</pre>
                         <br><code>pacman -Sc</code> can clear the cache.
                     </p>
                     <h3><span class="mw-headline" id="AUR">Installing AUR packages</span></h3>
-                    <p> </p>You should clone the repository using <a href="https://wiki.archlinux.org/index.php/Git">git</a> if it has a Git Clone URL, and then use <code>makepkg -si</code> after using <code>cd</code> to change directories.</p>
-                    <pre># cd ~
-# git clone <i>git-clone-url</i>
-# cd <i>package</i>
+                    <p>Install <a href="https://aur.archlinux.org/packages/yay/" >yay</a>, an AUR helper.</p>
+                    <pre># git clone https://aur.archlinux.org/yay.git
+# cd yay
 # makepkg -si
 # cd ..
-# rm -rf <i>package</i></pre>
-                    <p>Check out my <a href="https://github.com/mt60395/aur-py">aur-py</a> repository for this process, automated.</p>
+# rm -rf yay</pre>
+                    <p>To install packages from the AUR, run <pre>yay -S <i>package</i></pre></p>
                     <h2><span class="mw-headline" id="Miscellaneous">Miscellaneous</span></h2>
                     <h3><span class="mw-headline" id="Defaults">Setting defaults</span></h3>
                     <p><a href="https://wiki.archlinux.org/index.php/Xdg-utils#xdg-settings">xdg-settings</a> can be used to set defaults if you don't have a feature in your desktop environment to do so.</p>
